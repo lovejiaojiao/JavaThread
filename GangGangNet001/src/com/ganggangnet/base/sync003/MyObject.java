@@ -25,7 +25,7 @@ public class MyObject {
     }
 
     public void method2(){
-        System.out.println(Thread.currentThread().getName());
+        System.out.println("method2="+Thread.currentThread().getName());
     }
 
     public static void main(String args[]){
@@ -41,6 +41,35 @@ public class MyObject {
         Thread t2 = new Thread(new Runnable() {
             @Override
             public void run() {
+                mo.method1();
+            }
+        });
+
+        Thread t3 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                mo.method2();
+                //mo.method1();
+            }
+        });
+
+        Thread t4 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                mo.method2();
+                //mo.method1();
+            }
+        });
+        Thread t5 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                mo.method2();
+                //mo.method1();
+            }
+        });
+        Thread t6 = new Thread(new Runnable() {
+            @Override
+            public void run() {
                 mo.method2();
                 //mo.method1();
             }
@@ -48,6 +77,11 @@ public class MyObject {
 
         t1.start();
         t2.start();
+
+        t3.start();
+        t4.start();
+        t5.start();
+        t6.start();
 
 
 
